@@ -1,0 +1,17 @@
+[data-md-color-scheme="personal"] {
+    --md-primary-fg-color:        rgba(112,186,78,1);
+    --md-primary-fg-color--light: rgba(112,186,78,1);
+    --md-primary-fg-color--dark: rgba(12,73,0,1);
+  }
+
+[data-md-color-scheme="personal-dark"] {
+    --md-primary-fg-color:        rgba(12,73,0,1);
+    --md-primary-fg-color--light: rgba(112,186,78,1);
+    --md-primary-fg-color--dark: rgba(12,73,0,1);
+  }
+
+.md-header{
+    background: linear-gradient(90deg, rgba(112,186,78,1) 0%, rgba(12,73,0,1) 100%);}
+
+img[alt=me]{ width: 50%; }
+  

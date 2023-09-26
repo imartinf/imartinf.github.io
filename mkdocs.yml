@@ -1,3 +1,39 @@
 site_name: Iván Martín-Fernández
 theme:
+  logo: assets/logo.svg
+  favicon: assets/logo.svg
+  font:
+    text: Inter
+    code: Fragment Mono
   name: material
+  palette:
+    # Palette toggle for light mode
+    - media: '(prefers-color-scheme: light)'
+      scheme: personal
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/brightness-7 
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - media: '(prefers-color-scheme: dark)'
+      scheme: personal-dark
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.top
+extra_css:
+  - stylesheets/extra.css
+plugins:
+  - social
+extra:
+  social:
+    - icon: fontawesome/brands/linkedin
+      link: www.linkedin.com/in/ivan-martin-fernandez
+    - icon: fontawesome/brands/github
+      link: https://github.com/imartinf
+site_url: https://imartinf.github.io
