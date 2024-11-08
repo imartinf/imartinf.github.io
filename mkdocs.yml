@@ -32,6 +32,8 @@ plugins:
   - social
 extra:
   social:
+    - icon: fontawesome/brands/google-scholar
+      link: https://scholar.google.com/citations?user=1eHvsbsAAAAJ&hl=es&oi=ao
     - icon: fontawesome/brands/linkedin
       link: www.linkedin.com/in/ivan-martin-fernandez
     - icon: fontawesome/brands/github

@@ -1,5 +1,10 @@
 # Slides
 
+## MuSe 2024 @ ACM Multimedia
+*Melbourne, October 2024*
+
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTm3xEUqLoBECrlwld-24vL-fENm1Ld1HhHccEXjfFhMfoQ1oTAHHkDfI4-tiH9rsiETYAriKrAAKUa/embed?start=true&loop=true&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
 ## 15th MediaEval Workshop
 *Amsterdam, February 2024*
 
