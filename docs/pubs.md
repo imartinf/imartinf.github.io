@@ -1,5 +1,32 @@
 # Publications
 
+## 2025
+
+### Parameter-Efficient Adaptation of Large Vision—Language Models for Video Memorability Prediction
+
+Iván Martín-Fernández, Sergio Esteban-Romero, Fernando Fernández-Martínez, and Manuel Gil-Martín. 2025. "Parameter-Efficient Adaptation of Large Vision—Language Models for Video Memorability Prediction" Sensors 25, no. 6: 1661. [https://doi.org/10.3390/s25061661](https://doi.org/10.3390/s25061661)
+
+**Abstract**
+The accurate modelling of video memorability, or the intrinsic properties that render a piece of audiovisual content more likely to be remembered, will facilitate the development of automatic systems that are more efficient in retrieving, classifying and generating impactful media. Recent studies have indicated a strong correlation between the visual semantics of video and its memorability. This underscores the importance of developing advanced visual comprehension abilities to enhance model performance. It has been demonstrated that Large Vision–Language Models (LVLMs) demonstrate exceptional proficiency in generalist, high-level semantic comprehension of images and video, due to their extensive multimodal pre-training on a vast scale. This work makes use of the vast generalist knowledge of LVLMs and explores efficient adaptation techniques with a view to utilising them as memorability predictors. In particular, the Quantized Low-Rank Adaptation (QLoRA) technique is employed to fine-tune the Qwen-VL model with memorability-related data extracted from the Memento10k dataset. In light of existing research, we propose a particular methodology that transforms Qwen-VL from a language model to a memorability score regressor. Furthermore, we consider the influence of selecting appropriate LoRA hyperparameters, a design aspect that has been insufficiently studied. We validate the LoRA rank and alpha hyperparameters using 5-Fold Cross-Validation and evaluate our best configuration on the official testing portion of the Memento10k dataset, obtaining a state-of-the-art Spearman Rank Correlation Coefficient (SRCC) of 0.744. Consequently, this work represents a significant advancement in modelling video memorability through high-level semantic understanding.
+
+```title="Bibtex"
+@article{s25061661,
+	article-number = {1661},
+	author = {Mart{\'\i}n-Fern{\'a}ndez, Iv{\'a}n and Esteban-Romero, Sergio and Fern{\'a}ndez-Mart{\'\i}nez, Fernando and Gil-Mart{\'\i}n, Manuel},
+	doi = {10.3390/s25061661},
+	issn = {1424-8220},
+	journal = {Sensors},
+	number = {6},
+	pubmedid = {40292713},
+	title = {Parameter-Efficient Adaptation of Large Vision---Language Models for Video Memorability Prediction},
+	url = {https://www.mdpi.com/1424-8220/25/6/1661},
+	volume = {25},
+	year = {2025},
+	bdsk-url-1 = {https://www.mdpi.com/1424-8220/25/6/1661},
+	bdsk-url-2 = {https://doi.org/10.3390/s25061661}
+}
+```
+
 ## 2024
 
 ### Larger Encoders, Smaller Regressors: Exploring Label Dimensionality Reduction and Multimodal Large Language Models as Feature Extractors for Predicting Social Perception
