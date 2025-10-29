@@ -1,5 +1,7 @@
 # Publications
 
+> The list here only shows papers for which I am first author and selected publications in which I have participated. Please refer to my [:fontawesome-brands-google-scholar: Google Scholar Profile](https://scholar.google.com/citations?user=1eHvsbsAAAAJ&hl=es&oi=ao) for a more exhaustive list.
+
 ## 2025
 
 ### Parameter-Efficient Adaptation of Large Vision—Language Models for Video Memorability Prediction
