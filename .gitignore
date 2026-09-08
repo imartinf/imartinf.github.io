@@ -1,2 +1,5 @@
-site
-.cache/
+site/
+.venv/
+__pycache__/
+.DS_Store
+.vscode/
