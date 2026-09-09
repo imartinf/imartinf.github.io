@@ -1,6 +1,6 @@
 ---
 titulo: Research
-antetitulo: Publicaciones y tesis
+antetitulo: Publications and thesis
 entradilla: First-author papers and selected collaborations. Everything else lives on Google Scholar.
 descripcion: Publications on video memorability, persuasion strategies and social perception.
 nav: Research

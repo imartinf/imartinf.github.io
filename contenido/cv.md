@@ -1,6 +1,6 @@
 ---
 titulo: CV
-antetitulo: Trayectoria
+antetitulo: Background
 entradilla: Short version here, full PDF one click away.
 nav: CV
 orden: 4

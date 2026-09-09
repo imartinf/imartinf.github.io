@@ -1,6 +1,6 @@
 ---
 titulo: Talks and materials
-antetitulo: Congresos y talleres
+antetitulo: Conferences and workshops
 entradilla: Slides from conferences and workshops. Each link opens the deck full screen.
 nav: Talks
 orden: 3
