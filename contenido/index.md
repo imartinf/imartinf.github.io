@@ -9,49 +9,18 @@ orden: 1
 
 <img class="retrato" src="assets/retrato.jpg" alt="Iván Martín-Fernández">
 
-How **memorable** a clip is, how it tries to **persuade**, what it suggests about the person
-on screen. None of it is in the pixels: it happens in the encounter between the pixels and
-somebody who has already lived other things.
+I recently finished my PhD at the **Speech Technology and Machine Learning Group (GTHAU)**,
+ETSIT — Universidad Politécnica de Madrid, where I now teach and continue my research.
 
-I recently finished my PhD at the **Speech Technology and Machine Learning Group (GTH-AU)**,
-ETSIT — Universidad Politécnica de Madrid, where I now teach and continue this
-work.<!-- ← confirma esta línea -->
+My work is focused on modelling **human subjective perception** through **State of the Art AI
+Systems**. In particular, I study how to create computational models that mimic aspects of
+human perception: including **memorability**, **social perception** and **ad decoding**. This
+will help us to create better multimedia systems in the fields of social media, marketing and
+education, among others. This area of research involves knowledge from different fields, such
+as **computer vision**, **deep learning**, **natural language processing** and **audio
+processing**.
 
 [Research →](research/){ .boton .primario } [Talks and materials →](talks/){ .boton }
-
-## The argument
-
-Perceptual variables are annotated by people, and people disagree. The usual move is to
-average that disagreement away and call the mean a ground truth. But the disagreement is
-systematic: it repeats across annotators, across datasets, across tasks.
-
-::: idea
-Si el desacuerdo entre observadores es sistemático, deja de ser error y pasa a ser señal.
-:::
-
-Modelling that — instead of flattening it — is what makes these systems useful for media
-auditing, content creation and education.
-
-## The three tasks
-
-::: tarjetas
-- **Memorability** How likely a video is to be remembered on a second viewing. Measured with
-  memory games and rating protocols, predicted with video transformers and vision–language
-  models.
-- **Persuasion** Which strategies an advertisement uses to convince, and whether a
-  multimodal model can name them without being told what to look for.
-- **Social perception** What an audience infers about a speaker — warmth, competence,
-  credibility — from a few seconds of audiovisual recording.
-:::
-
-## The PhD
-
-**Modeling Subjective Perception in Multimedia with Large-Scale Multimodal Models**
-· Universidad Politécnica de Madrid<!-- ← año de defensa y enlace al PDF -->
-
-Three experimental blocks — memorability, persuasion and social perception — built around
-one idea: that the variability between observers is part of the phenomenon and not noise to
-be removed.
 
 ## Elsewhere
 
