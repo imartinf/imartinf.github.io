@@ -1,6 +1,6 @@
 ---
 titulo: Iván Martín-Fernández
-antetitulo: Percepción subjetiva multimodal · GTH-AU · ETSIT-UPM
+antetitulo: Percepción subjetiva multimodal · GTHAU · ETSIT-UPM
 entradilla: I build computational models of the things about a video or an image that only exist once somebody watches them.
 descripcion: Multimodal models of subjective perception - memorability, persuasion strategies and social perception.
 nav: Home
