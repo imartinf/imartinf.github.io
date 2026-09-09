@@ -1,0 +1,217 @@
+/* =========================================================================
+   Sistema IMF — la hoja de estilo del sitio.
+   Es el mismo armazón que la página «Una conferencia entera»: rótulos de
+   sección numerados, antetítulo en mono, entradilla y tarjetas.
+   Comprometida con el modo claro a propósito.
+   ========================================================================= */
+
+:root{
+  color-scheme: light;
+  --papel:#EDEDE6;
+  --lienzo:#FBFAF6;
+  --panel:#FFFFFF;
+  --tinta:#17201A;
+  --apagado:#5A6359;
+  --tenue:#8A9187;
+  --filete:#DCDCD2;
+  --filete-suave:#E8E8DF;
+  --bosque:#234A2E;
+  --savia:#6FA83F;
+  --savia-suave:#E8F0DE;
+  --petroleo:#14484E;
+  --petroleo-2:#2C7A83;
+  --arcilla:#B85F44;
+
+  --sans:"IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --serif:"IBM Plex Serif", Georgia, "Times New Roman", serif;
+  --mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--papel); color:var(--tinta);
+  font-family:var(--serif); font-size:17px; line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1060px; margin:0 auto; padding:34px 24px 90px}
+p{margin:0 0 1em; max-width:66ch}
+strong{font-weight:600; color:var(--bosque)}
+a{color:var(--petroleo-2); text-decoration:none; border-bottom:1px solid rgba(44,122,131,.3)}
+a:hover{border-bottom-color:var(--petroleo-2)}
+:focus-visible{outline:2px solid var(--petroleo); outline-offset:2px}
+hr{border:0; border-top:1px solid var(--filete); margin:38px 0}
+
+/* ------------------------------------------------------------------ barra */
+.barra{
+  display:flex; align-items:flex-end; gap:20px; flex-wrap:wrap;
+  padding-bottom:14px; margin-bottom:34px;
+  border-bottom:1px solid var(--filete);
+}
+.marca{
+  font-family:var(--sans); font-weight:600; font-size:18px; letter-spacing:-.01em;
+  color:var(--bosque); border:0; line-height:1;
+}
+.marca::after{content:""; display:block; height:3px; background:var(--savia); margin-top:4px}
+.barra nav{display:flex; gap:18px; flex-wrap:wrap; margin-left:auto; padding-bottom:2px}
+.barra nav a{
+  font-family:var(--mono); font-size:12px; letter-spacing:.06em;
+  color:var(--tenue); border:0; padding-bottom:3px;
+  border-bottom:1px solid transparent;
+}
+.barra nav a:hover{color:var(--petroleo)}
+.barra nav a.on{color:var(--bosque); border-bottom-color:var(--savia)}
+
+/* ---------------------------------------------------------------- portada */
+.portada{margin:0 0 46px}
+.antetitulo{
+  font-family:var(--mono); font-size:11px; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--tenue); margin:0 0 12px;
+}
+h1{
+  font-family:var(--sans); font-weight:700; font-size:clamp(30px,5vw,44px);
+  line-height:1.05; letter-spacing:-.025em; color:var(--bosque);
+  margin:0 0 12px; text-wrap:balance;
+}
+.entradilla{font-size:19px; color:var(--apagado); max-width:62ch; margin:0}
+
+/* -------------------------------------------------------------- secciones */
+section{margin:0 0 54px}
+section.intro{margin-bottom:38px}
+h2{
+  font-family:var(--sans); font-weight:600; font-size:13px; letter-spacing:.13em;
+  text-transform:uppercase; color:var(--apagado);
+  margin:0 0 16px; padding-bottom:8px; border-bottom:1px solid var(--filete);
+  display:flex; justify-content:space-between; align-items:baseline; gap:16px;
+}
+h2 .n{font-family:var(--mono); font-size:12px; color:var(--tenue); letter-spacing:0}
+h3{
+  font-family:var(--sans); font-weight:600; font-size:19px; letter-spacing:-.015em;
+  color:var(--tinta); margin:30px 0 6px; text-wrap:balance; max-width:62ch;
+}
+h4{font-family:var(--sans); font-weight:600; font-size:15px; color:var(--apagado); margin:22px 0 5px}
+p.lede{font-size:18px; color:var(--apagado); margin:0 0 22px; max-width:62ch}
+
+/* ------------------------------------------------------------------ listas */
+ul,ol{margin:0 0 1.05em; max-width:66ch; padding-left:0}
+ul{list-style:none}
+ul li{position:relative; padding-left:20px; margin-bottom:9px}
+ul li::before{content:""; position:absolute; left:0; top:.62em; width:9px; height:2px; background:var(--savia)}
+ol{padding-left:24px}
+ol li{margin-bottom:9px}
+li > ul, li > ol{margin:8px 0 0}
+
+/* --------------------------------------------------------------- tarjetas */
+.tarjetas ul{
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(232px,1fr));
+  gap:12px; margin:20px 0; max-width:none; list-style:none; padding:0;
+}
+.tarjetas li{
+  background:var(--panel); border:1px solid var(--filete-suave); border-radius:4px;
+  padding:14px 16px; margin:0; padding-left:16px;
+  font-family:var(--sans); font-size:13.5px; line-height:1.5; color:var(--apagado);
+}
+.tarjetas li::before{display:none}
+.tarjetas li strong{
+  display:block; font-family:var(--mono); font-size:10.5px; font-weight:400;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--petroleo-2);
+  margin-bottom:5px;
+}
+.tarjetas li a{border-bottom-color:rgba(44,122,131,.25)}
+
+/* -------------------------------------------------------------------- idea */
+blockquote{
+  margin:0 0 1.2em; padding:2px 0 2px 16px;
+  border-left:3px solid var(--filete); color:var(--apagado); font-style:italic;
+}
+.idea{
+  margin:0 0 20px;
+  background:var(--savia-suave); border-left:4px solid var(--savia);
+  padding:16px 20px; font-style:normal; color:var(--tinta); max-width:none;
+}
+.idea p{font-size:19px; line-height:1.4; margin:0; max-width:40ch}
+blockquote p:last-child{margin-bottom:0}
+
+/* ------------------------------------------------------------------ tablas */
+table{width:100%; border-collapse:collapse; margin:16px 0 24px; font-size:15px}
+th{
+  font-family:var(--sans); text-align:left; font-size:11px; text-transform:uppercase;
+  letter-spacing:.07em; color:var(--bosque); font-weight:600;
+  border-bottom:2px solid var(--bosque); padding:8px 14px 8px 0;
+}
+td{padding:11px 14px 11px 0; border-bottom:1px solid var(--filete-suave);
+   vertical-align:top; color:var(--apagado); font-variant-numeric:tabular-nums}
+td:first-child{color:var(--tinta); font-family:var(--sans); font-weight:600; font-size:14.5px}
+
+/* ----------------------------------------------------------------- código */
+code{font-family:var(--mono); font-size:13px; color:var(--petroleo);
+     background:var(--lienzo); padding:1px 5px; border-radius:3px}
+pre{
+  margin:14px 0 20px; padding:16px 18px; background:var(--lienzo);
+  border:1px solid var(--filete-suave); border-radius:4px;
+  overflow-x:auto; line-height:1.55;
+}
+pre code{background:none; padding:0; font-size:12.5px; color:var(--apagado)}
+.highlight .k,.highlight .kn{color:var(--bosque); font-weight:600}
+.highlight .s,.highlight .s1,.highlight .s2,.highlight .na{color:var(--petroleo)}
+.highlight .c,.highlight .c1{color:var(--tenue); font-style:italic}
+.highlight .m,.highlight .mi{color:var(--arcilla)}
+
+/* ----------------------------------------------------------- desplegables */
+details{
+  margin:12px 0 18px; max-width:none;
+  background:var(--lienzo); border:1px solid var(--filete-suave);
+  border-left:3px solid var(--filete); border-radius:0 4px 4px 0;
+}
+details[open]{border-left-color:var(--savia)}
+details > summary{
+  font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--tenue); padding:11px 16px; cursor:pointer; list-style:none;
+  display:flex; align-items:center; gap:10px;
+}
+details > summary::-webkit-details-marker{display:none}
+details > summary::before{content:"+"; color:var(--savia); font-size:13px; width:10px}
+details[open] > summary::before{content:"–"}
+details > summary:hover{color:var(--petroleo)}
+details > *:not(summary){padding:0 16px; max-width:none}
+details > *:not(summary):last-child{padding-bottom:14px}
+details p{font-family:var(--sans); font-size:14px; color:var(--apagado); line-height:1.55; margin:0 0 .9em}
+details pre{margin:0 0 4px}
+
+/* ------------------------------------------------------------------ ficha */
+/* la línea de autores y venue bajo cada título de publicación */
+h3 + p, p.ficha{
+  font-family:var(--sans); font-size:14px; color:var(--apagado);
+  margin:0 0 10px; max-width:none; line-height:1.5;
+}
+p.ficha strong{color:var(--tinta)}
+p.ficha em{font-style:italic}
+
+/* ---------------------------------------------------------------- botones */
+a.boton{
+  display:inline-block; font-family:var(--sans); font-size:14px; font-weight:600;
+  color:var(--bosque); border:1px solid var(--bosque); border-radius:3px;
+  padding:9px 16px; margin:4px 8px 8px 0;
+}
+a.boton:hover{background:var(--savia-suave)}
+a.boton.primario{background:var(--bosque); color:var(--lienzo); border-color:var(--bosque)}
+a.boton.primario:hover{background:#1B3A24}
+
+/* ------------------------------------------------------------------ retrato */
+img.retrato{
+  float:right; width:34%; max-width:260px; margin:2px 0 18px 28px;
+  border-radius:4px;
+}
+p:has(> a.boton){clear:both}
+@media (max-width:640px){
+  img.retrato{float:none; width:62%; margin:16px 0 20px}
+  .wrap{padding:26px 18px 70px}
+}
+
+/* -------------------------------------------------------------------- pie */
+footer{
+  margin-top:56px; padding-top:16px; border-top:1px solid var(--filete);
+  font-family:var(--mono); font-size:11px; line-height:1.9; color:var(--tenue);
+}
+footer a{color:var(--apagado); border-bottom-color:var(--filete)}
+footer a:hover{color:var(--petroleo-2)}
