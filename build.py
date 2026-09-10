@@ -29,6 +29,8 @@ Convenciones del markdown (todas opcionales):
     ::: idea              → bloque de savia
     La frase que importa.
     :::
+
+    {{figura:nombre}}     → tema/figuras/nombre.svg, pegado en línea
 """
 
 import argparse
@@ -69,6 +71,17 @@ def bloques(texto):
     return re.sub(r"(?ms)^::: +(\w[\w -]*)\n(.*?)^:::\s*$", envolver, texto)
 
 
+def figuras(html):
+    """<p>{{figura:nombre}}</p>  →  el SVG de tema/figuras/nombre.svg, en línea.
+
+    En línea y no <img src>: así el SVG hereda las variables de estilos.css y
+    cambia solo si cambia un token. Un <img> no las ve y sale en negro.
+    """
+    def pegar(m):
+        return (TEMA / "figuras" / f"{m.group(1)}.svg").read_text(encoding="utf-8").strip()
+    return re.sub(r"<p>\{\{figura:([\w-]+)\}\}</p>", pegar, html)
+
+
 def seccionar(html):
     """Envuelve cada <h2> y lo que le sigue en <section>, y lo numera."""
     trozos = re.split(r"(?=<h2)", html)
@@ -102,7 +115,7 @@ def main(serve=False):
         paginas.append({
             "slug": "" if ruta.stem == "index" else ruta.stem,
             "meta": meta,
-            "html": seccionar(md.convert(cuerpo)),
+            "html": seccionar(figuras(md.convert(cuerpo))),
             "orden": meta.get("orden", 99),
             "nav": meta.get("nav", meta.get("titulo", ruta.stem)),
         })

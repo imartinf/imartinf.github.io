@@ -20,6 +20,7 @@
   --savia-suave:#E8F0DE;
   --petroleo:#14484E;
   --petroleo-2:#2C7A83;
+  --petroleo-suave:#D6F2F6;
   --arcilla:#B85F44;
 
   --sans:"IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -208,6 +209,29 @@ p:has(> a.boton){clear:both}
   .wrap{padding:26px 18px 70px}
 }
 
+/* ---------------------------------------------------------------- figuras */
+/* Los SVG van pegados en línea ({{figura:x}} en el markdown), no como <img>:
+   así heredan estas variables y cambian solos si cambia un token. */
+svg.banda{width:100%; height:auto; display:block; margin:22px 0 0; font-family:var(--sans)}
+p.pie{
+  font-family:var(--mono); font-size:11.5px; line-height:1.5; color:var(--tenue);
+  margin:8px 0 22px; max-width:72ch;
+}
+
+/* ---------------------------------------------------------------- ofertas */
+body{counter-reset:oferta}
+.oferta{
+  counter-increment:oferta;
+  margin:0 0 42px; padding-top:28px; border-top:1px solid var(--filete);
+}
+.oferta:first-of-type{padding-top:0; border-top:0}
+.oferta::before{
+  content:counter(oferta,decimal-leading-zero);
+  display:block; margin-bottom:6px;
+  font-family:var(--mono); font-size:12px; letter-spacing:.1em; color:var(--petroleo-2);
+}
+.oferta h3{margin-top:0; font-size:21px}
+
 /* -------------------------------------------------------------------- pie */
 footer{
   margin-top:56px; padding-top:16px; border-top:1px solid var(--filete);
@@ -215,3 +239,43 @@ footer{
 }
 footer a{color:var(--apagado); border-bottom-color:var(--filete)}
 footer a:hover{color:var(--petroleo-2)}
+
+/* -------------------------------------------------------------- impresión */
+/* El PDF es esta misma página impresa: no hay segunda plantilla ni segundo
+   montaje. A4, la navegación fuera y una oferta por hoja.
+   Ctrl/Cmd+P → A4 vertical, márgenes predeterminados, «gráficos de fondo». */
+@media print{
+  @page{size:A4 portrait; margin:14mm 15mm}
+  html,body{background:#fff}
+  body{font-size:10.5pt; line-height:1.5}
+  .wrap{max-width:none; padding:0}
+
+  .barra{margin-bottom:9mm; padding-bottom:8px}
+  .barra nav{display:none}                    /* la marca se queda, el menú no */
+
+  .portada{margin-bottom:8mm}
+  h1{font-size:22pt}
+  .antetitulo{font-size:8.5pt}
+  .entradilla{font-size:12pt; margin-bottom:6px}
+  section.intro{margin-bottom:9mm}            /* la entrada sí va en el PDF: es la oferta */
+
+  section{margin-bottom:0}
+  .oferta{
+    break-before:page; page-break-before:always;
+    margin-bottom:0; padding-top:0; border-top:0;
+  }
+  .oferta:first-of-type{break-before:auto; page-break-before:auto}
+  .oferta::before{font-size:9pt}
+  .oferta h3{font-size:15pt; margin-bottom:3px}
+  h4{font-size:9.5pt; margin:13px 0 3px}
+  p,ul,ol{font-size:10.5pt}
+  ul li{margin-bottom:3px}
+  svg.banda{margin-top:12px}
+  p.pie{font-size:8.5pt; margin-bottom:12px}
+
+  svg.banda,ul,h3,h4{break-inside:avoid; page-break-inside:avoid}
+  h3,h4{break-after:avoid; page-break-after:avoid}
+
+  footer{margin-top:9mm}
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact}
+}
