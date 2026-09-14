@@ -1,0 +1,60 @@
+/* generado por build.py desde tokens.json — no editar a mano */
+:root{
+  color-scheme: light;
+  --papel: #EDEDE6;  /* Fondo de página, fuera de la hoja */
+  --lienzo: #FBFAF6;  /* La hoja: diapositiva, página, tarjeta grande */
+  --panel: #FFFFFF;  /* Superficie elevada dentro del lienzo */
+  --tinta: #17201A;  /* Texto principal. Negro con verde dentro, nunca #000 */
+  --apagado: #5A6359;  /* Texto secundario, pies de figura */
+  --tenue: #8A9187;  /* Etiquetas, ejes, metadatos */
+  --filete: #DCDCD2;  /* Separación visible. Grosor único: 1px / 0.4pt */
+  --filete-suave: #E8E8DF;  /* Separación interna, rejilla de gráficos */
+  --bosque: #234A2E;  /* ESTRUCTURA: títulos, ejes, divisorias, filetes fuertes */
+  --savia: #6FA83F;  /* LO VIVO: rellenos, marca, barra de datos */
+  --savia-suave: #E8F0DE;  /* Fondo de bloque, fila destacada */
+  --petroleo: #14484E;  /* ACENTO: lo que hay que mirar en esta pieza y no en la siguiente */
+  --petroleo-suave: #D6F2F6;  /* Fondo de bloque de acento. Hermano de savia_suave: misma L* y misma C*, el tono del petróleo */
+  --petroleo-2: #2C7A83;  /* Acento secundario, estados hover, enlaces */
+  --arcilla: #B85F44;  /* Aviso. Escasísimo: si aparece dos veces en una página, sobra una */
+  --sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --serif: "IBM Plex Serif", Georgia, "Times New Roman", serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  --t-portada: 44px;
+  --t-titulo: 32px;
+  --t-seccion: 21px;
+  --t-cuerpo: 17px;
+  --t-secundario: 15px;
+  --t-pie: 13px;
+  --t-etiqueta: 11px;
+  --e1: 8px;
+  --e2: 16px;
+  --e3: 24px;
+  --e4: 40px;
+  --e5: 64px;
+  --radio: 4px;
+  --medida: 66ch;
+  --serie-1: #5FA22B;
+  --serie-2: #0095A8;
+  --serie-3: #C85A28;
+  --serie-4: #3D5BC4;
+  --serie-5: #B08A12;
+  --serie-6: #9A3A76;
+}
+
+/* base tipográfica generada por build.py desde tokens.json — no editar a mano */
+body{background:var(--papel);color:var(--tinta);font-family:var(--serif);
+  font-size:var(--t-cuerpo);line-height:1.6;}
+h1,h2,h3,h4{font-family:var(--sans);font-weight:600;color:var(--bosque);
+  line-height:1.1;letter-spacing:-.02em;text-wrap:balance;}
+h1{font-size:var(--t-portada);font-weight:700}
+h2{font-size:var(--t-titulo)}
+h3{font-size:var(--t-seccion)}
+p{max-width:var(--medida)}
+a{color:var(--petroleo-2)}
+.etiqueta{font-family:var(--mono);font-size:var(--t-etiqueta);
+  letter-spacing:0.13em;text-transform:uppercase;color:var(--tenue)}
+.dato{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.cita{border-left:3px solid var(--filete);padding-left:14px;font-style:italic;color:var(--apagado)}
+.idea{background:var(--savia-suave);border-left:4px solid var(--savia);padding:16px 20px}
+.marca{font-family:var(--sans);font-weight:600;color:var(--bosque);display:inline-block}
+.marca::after{content:'';display:block;height:3px;background:var(--savia);margin-top:5px}

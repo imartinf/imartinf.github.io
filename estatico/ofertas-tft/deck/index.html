@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- copia colgada en el sitio para pasarla por enlace: fuera de los buscadores.
+     El original vive en identidad-imf/plantillas/deck-ofertas-tft-2026-27-sala.html;
+     tokens.css de al lado es copia de identidad-imf/dist/tokens.css. -->
+<meta name="robots" content="noindex, nofollow">
+<title>BSc and MSc theses · 2026-27 — IMF (sala)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="tokens.css">
+<style>
+/* ============================================================
+   Deck de las ofertas de TFG/TFM 2026-27 · sistema IMF.
+   VERSIÓN DE SALA: la misma pieza con el tipo mucho mayor, para
+   proyectores viejos y salas grandes.
+
+   Qué cambia respecto de deck-ofertas-tft-2026-27.html:
+
+   1 · Los cuerpos ya no van en vw con tope en px, sino en cqw contra el
+       ancho de la diapositiva —.hoja es un contenedor de consulta—. 1cqw
+       es el 1 % del ancho de la diapositiva, así que la letra mide lo
+       mismo en ventana, a pantalla completa y en el PDF, y no depende de
+       la resolución ni de que la pantalla sea 16:9. Los topes en px eran
+       justo el problema: a pantalla completa en 1920, el titular se
+       quedaba en 34px, un 1,8 % del ancho de la diapositiva.
+
+   2 · El suelo es el texto de las bandas, que es el que se leía bien: el
+       SVG mide 900 unidades de ancho y se dibuja sobre los 92,8cqw de la
+       caja, así que sus 17 unidades son 1,75cqw. Ninguna letra baja de
+       ahí; el cuerpo de los puntos es 2,3cqw, más de dos veces el de la
+       versión normal.
+
+   3 · Menos aire y dos bloques recolocados para que quepa: márgenes
+       laterales más estrechos, las tres líneas del grupo apiladas en vez
+       de en tres columnas, y los QR bastante más grandes.
+
+   Atajos:  ← →  o espacio    cambiar de diapositiva
+            F                  pantalla completa
+            P                  imprimir a PDF (una diapositiva por página)
+   ============================================================ */
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{background:var(--papel);display:flex;flex-direction:column}
+
+.escenario{flex:1;display:grid;place-items:center;padding:20px;min-height:0}
+/* container-type hace de .hoja la referencia de todos los cqw de dentro */
+.hoja{width:min(100%, calc((100vh - 96px) * 16 / 9));aspect-ratio:16/9;position:relative;
+      background:var(--lienzo);border:1px solid var(--filete);border-radius:var(--radio);
+      overflow:hidden;box-shadow:0 10px 40px rgba(23,32,26,.10);
+      container-type:inline-size}
+
+/* ---- la escala, en un solo sitio ------------------------------------
+   Los nombres llevan el prefijo sl- para no pisar los --t-* de tokens.css,
+   que son los cuerpos en px del sistema y aquí no se usan. */
+.sl{
+  --sl-titulo: 3.8cqw;   /* titulares de diapositiva            ~73px en 1920 */
+  --sl-lead:   2.35cqw;  /* entradilla en serif                 ~45px         */
+  --sl-punto:  2.3cqw;   /* puntos de la lista                  ~44px         */
+  --sl-rotulo: 1.95cqw;  /* antetítulos y rótulos en versalita  ~37px         */
+  --sl-cap:    1.75cqw;  /* pies de figura = texto de las bandas ~34px         */
+  --sl-chrome: 1.8cqw;   /* pie de diapositiva                  ~35px         */
+  --sl-hueco:  3.6cqw;   /* margen lateral                                    */
+}
+
+.sl{position:absolute;inset:0;display:none;flex-direction:column}
+.sl.on{display:flex}
+.pad{flex:1;padding:2.6cqw var(--sl-hueco) 1.2cqw;display:flex;flex-direction:column;min-height:0}
+.pie{display:flex;align-items:center;gap:1.3cqw;padding:0 var(--sl-hueco) 1.6cqw}
+.pie .mk{font-family:var(--sans);font-weight:600;font-size:var(--sl-chrome);color:var(--bosque)}
+.pie .mk i{display:inline-block;width:1.5cqw;height:.22cqw;background:var(--savia);vertical-align:middle;margin-left:.5cqw}
+.pie .ti{font-family:var(--mono);font-size:calc(var(--sl-chrome) * .9);color:var(--tenue);flex:1;letter-spacing:.05em;text-transform:uppercase}
+.pie .pg{font-family:var(--mono);font-size:var(--sl-chrome);color:var(--tenue);font-variant-numeric:tabular-nums}
+
+.k{font-family:var(--mono);font-size:var(--sl-rotulo);letter-spacing:.14em;text-transform:uppercase;color:var(--petroleo-2);margin:0 0 1cqw}
+.st{font-family:var(--sans);font-weight:700;font-size:var(--sl-titulo);line-height:1.06;letter-spacing:-.02em;color:var(--bosque);margin:0 0 1cqw;max-width:30ch;text-wrap:balance}
+.sd{font-family:var(--serif);font-size:var(--sl-lead);line-height:1.35;color:var(--apagado);margin:0;max-width:56ch}
+.filete{width:5cqw;height:.35cqw;background:var(--savia);margin-bottom:1.6cqw}
+.centrado{justify-content:center}
+
+/* portada y cierre */
+.marca-xl{font-family:var(--sans);font-weight:600;font-size:3.2cqw;color:var(--bosque);display:inline-block;align-self:flex-start;margin-bottom:2.6cqw}
+.marca-xl::after{content:"";display:block;height:.38cqw;background:var(--savia);margin-top:.6cqw}
+
+/* divisoria de sección */
+.sl.divisoria .hoja,.sl.divisoria{background:var(--bosque)}
+.sl.divisoria .st{color:var(--lienzo)}
+.sl.divisoria .sd{color:rgba(251,250,246,.72)}
+.sl.divisoria .k{color:var(--savia)}
+.sl.divisoria .pie .mk{color:var(--lienzo)}
+.sl.divisoria .pie .ti,.sl.divisoria .pie .pg{color:rgba(251,250,246,.5)}
+
+/* dos columnas: texto + figura */
+.dos{display:grid;grid-template-columns:1fr 1.4fr;gap:3cqw;flex:1;min-height:0;align-items:center}
+.dos svg,.dos img{width:100%;height:auto;display:block}
+
+/* lista de puntos */
+.pts{margin:0;padding:0;list-style:none}
+.pts li{font-family:var(--serif);font-size:var(--sl-punto);color:var(--apagado);padding-left:1.9cqw;position:relative;margin-bottom:.9cqw;line-height:1.38}
+.pts li::before{content:"";position:absolute;left:0;top:.62em;width:.95cqw;height:.26cqw;background:var(--savia)}
+.pts li b{color:var(--tinta);font-weight:600}
+.pts li .ac{color:var(--petroleo);font-weight:600}
+
+/* bloque de idea */
+.idea-sl{background:var(--savia-suave);border-left:.45cqw solid var(--savia);padding:2.4cqw 2.8cqw}
+.idea-sl p{font-family:var(--serif);font-size:3.2cqw;line-height:1.3;color:var(--tinta);margin:0;max-width:30ch}
+
+/* pie de figura */
+.cap{font-family:var(--mono);font-size:var(--sl-cap);color:var(--tenue);margin:.9cqw 0 0;line-height:1.4}
+.cap b{color:var(--petroleo);font-weight:500}
+
+/* ---- diapositiva de oferta ------------------------------------------ */
+/* la banda es muy apaisada, así que va a todo el ancho y no en columna */
+.oferta-cuerpo{flex:1;display:flex;flex-direction:column;justify-content:center;
+                gap:1.3cqw;min-height:0}
+/* a este cuerpo le viene bien todo el ancho: partir la entradilla en dos
+   líneas cortas cuesta más alto del que sobra */
+.oferta-cuerpo .ac-linea{color:var(--petroleo);max-width:none}
+.oferta-cuerpo .figura svg.banda{width:100%;height:auto;display:block}
+.oferta-cuerpo .pts{columns:2;column-gap:3.2cqw}
+.oferta-cuerpo .pts li{break-inside:avoid;margin-bottom:.9cqw}
+
+/* ---- diapositiva del grupo ------------------------------------------ */
+.rot{font-family:var(--mono);font-size:var(--sl-rotulo);letter-spacing:.12em;
+      text-transform:uppercase;color:var(--tenue);margin:0 0 1.2cqw}
+/* con el tipo grande, tres columnas obligaban a partir cada línea en tres
+   renglones: apiladas, cada una cabe en uno */
+.lineas{display:flex;flex-direction:column;gap:.9cqw;margin-bottom:1.6cqw}
+.linea{background:var(--filete-suave);border-left:.36cqw solid var(--tenue);
+        padding:1.05cqw 1.6cqw;display:flex;align-items:center}
+.linea span{font-family:var(--sans);font-weight:600;font-size:2.15cqw;
+             line-height:1.25;color:var(--apagado)}
+/* para resaltar una línea concreta, si alguna vez hace falta: el acento de
+   esta diapositiva. Hoy no la lleva ninguna, porque las tres ofertas no
+   salen de una sola línea del póster del grupo. */
+.linea.destacada{background:var(--petroleo-suave);border-left-color:var(--petroleo)}
+.linea.destacada span{color:var(--petroleo)}
+.tira{padding-top:1.2cqw;border-top:1px solid var(--filete);display:flex;
+       flex-direction:column;gap:.4cqw}
+.tira p{font-family:var(--serif);font-size:2cqw;line-height:1.35;
+         color:var(--apagado);margin:0;max-width:none}
+.tira .dato{font-family:var(--mono);font-weight:500;color:var(--bosque)}
+.tira .web{font-family:var(--mono);color:var(--petroleo-2)}
+
+/* ---- bloque de QR (diapositivas 2 y 6) ------------------------------ */
+/* el QR se dibuja con los tokens, como las demás figuras: el fondo es lienzo
+   y los módulos, bosque. La zona de silencio (4 módulos) va dentro del SVG,
+   así que el filete puede pegarse al borde sin estorbar al lector.
+   Aquí el QR crece más del doble: es lo que se mira desde la butaca. */
+.qr-bloque{display:flex;flex-direction:column;align-items:center;gap:1cqw}
+.qr{width:20cqw;height:auto;display:block;
+     border:1px solid var(--filete);border-radius:var(--radio)}
+/* la dirección ya no cabe en una línea al cuerpo nuevo, así que se parte
+   por las barras —nunca por un guion, que se lee como parte de la URL— */
+.qr-pie{font-family:var(--mono);font-size:1.5cqw;line-height:1.35;
+         color:var(--tenue);margin:0;text-align:center;white-space:nowrap}
+.qr-pie b{display:block;font-family:var(--sans);font-weight:600;
+           font-size:1.95cqw;letter-spacing:.06em;text-transform:uppercase;
+           color:var(--petroleo-2);margin-bottom:.4cqw}
+
+/* la mitad de abajo de la diapositiva del grupo: líneas y tira a la
+   izquierda, QR a la derecha */
+.grupo-cuerpo{flex:1;min-height:0;display:grid;grid-template-columns:1fr auto;
+               gap:3.4cqw;align-items:center}
+.grupo-col{min-width:0}
+
+/* ---- diapositiva de cierre ------------------------------------------ */
+.cierre{display:grid;grid-template-columns:1fr auto;gap:4cqw;
+         align-items:center;width:100%}
+/* el nombre, en una sola línea: partido por el guion queda «Iván Martín-» */
+.cierre-nombre{font-size:5cqw;max-width:none;white-space:nowrap;
+                margin-bottom:1.6cqw}
+.cierre-correo{font-family:var(--mono);font-size:3cqw;color:var(--petroleo);
+                margin:0 0 1.2cqw}
+.cierre-sitio{font-family:var(--serif);font-size:2.4cqw;color:var(--apagado);
+               margin:0;line-height:1.4}
+.cierre .qr{width:26cqw}
+
+/* barra de control */
+.control{display:flex;align-items:center;gap:14px;padding:8px 18px;background:var(--panel);border-top:1px solid var(--filete)}
+.control button{font-family:var(--mono);font-size:11.5px;background:transparent;border:1px solid var(--filete);color:var(--apagado);border-radius:3px;padding:5px 11px;cursor:pointer}
+.control button:hover{border-color:var(--petroleo);color:var(--petroleo)}
+.control .n{font-family:var(--mono);font-size:11px;color:var(--tenue);flex:1;font-variant-numeric:tabular-nums}
+
+/* pantalla completa: fuera la barra de control y el marco de la hoja.
+   La clase la pone el script al entrar y al salir; con :fullscreen a secas
+   hay navegadores que no aplican la regla al elemento raiz. */
+html.fs .control{display:none}
+html.fs .escenario{padding:0}
+html.fs .hoja{width:min(100vw, calc(100vh * 16 / 9));border:0;border-radius:0;box-shadow:none}
+
+/* impresión: una diapositiva por página, apaisado */
+@media print{
+  @page{size:297mm 167mm;margin:0}
+  body{background:#fff}
+  .control{display:none}
+  .escenario{display:block;padding:0}
+  /* sin esto, .hoja conserva el overflow:hidden y el aspect-ratio de pantalla
+     y solo se imprime la primera diapositiva. Ya está en deck.html */
+  .hoja{width:100%;height:auto;overflow:visible;aspect-ratio:auto;
+        border:0;border-radius:0;box-shadow:none;position:relative}
+  /* la hoja sigue siendo contenedor de consulta al imprimir: comprobado
+     que las seis páginas salen igual y, midiendo los cqw contra la hoja y
+     no contra la página, los cuerpos son los mismos aunque se imprima en
+     A4 apaisado o con márgenes de la ventana de impresión */
+  .sl{display:flex !important;position:relative;height:167mm;
+      page-break-after:always;break-after:page}
+  .sl:last-child{page-break-after:auto;break-after:auto}
+  .sl:not(.on){display:flex !important}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+
+<div class="escenario">
+  <div class="hoja" id="hoja" tabindex="0">
+
+    <!-- ============ 1 · PORTADA ============ -->
+    <section class="sl on" data-t="Portada">
+      <div class="pad centrado">
+        <span class="marca-xl">IMF</span>
+        <h1 class="st" style="font-size:5.6cqw;max-width:none">BSc and MSc theses</h1>
+        <p class="sd" style="max-width:none">Iván Martín-Fernández · GTHAU · ETSIT — Universidad Politécnica de Madrid</p>
+        <p class="k" style="margin-top:1.2cqw;color:var(--tenue)">2026-27 · three projects</p>
+      </div>
+      <div class="pie"><span class="ti">imartinf.github.io</span></div>
+    </section>
+
+    <!-- ============ 2 · EL GRUPO ============ -->
+    <!-- datos del póster del grupo, curso 25-26 -->
+    <section class="sl" data-t="El grupo">
+      <div class="pad">
+        <p class="k">Who we are</p>
+        <h2 class="st" style="max-width:none">Speech Technology and
+          Machine Learning Group</h2>
+        <p class="sd" style="margin-bottom:1.2cqw;max-width:none">Information Processing and
+          Telecommunications Center · ETSI de Telecomunicación — Universidad Politécnica de Madrid</p>
+
+        <div class="grupo-cuerpo">
+          <div class="grupo-col">
+            <p class="rot">Lines of research</p>
+            <div class="lineas">
+              <div class="linea"><span>Intelligent Language and Communication</span></div>
+              <div class="linea"><span>Cognitive Modeling and Human Behavior</span></div>
+              <div class="linea"><span>Intelligent Agents and Environmental Perception</span></div>
+            </div>
+
+            <div class="tira">
+              <p><b class="dato">3</b> full professors · <b class="dato">5</b> associate
+                 professors · <b class="dato">6</b> PhD students</p>
+              <p>GPUs, training servers and a soundproof room</p>
+            </div>
+          </div>
+
+          <div class="qr-bloque">
+            <svg class="qr" viewBox="0 0 37 37" xmlns="http://www.w3.org/2000/svg"
+                 role="img" aria-label="QR: https://blogs.upm.es/gthau/offers-join-us/" shape-rendering="crispEdges"><rect width="37" height="37" fill="var(--lienzo)"/><path d="M4 4h7v1h-7zM12 4h3v1h-3zM16 4h2v1h-2zM20 4h1v1h-1zM23 4h2v1h-2zM26 4h7v1h-7zM4 5h1v1h-1zM10 5h1v1h-1zM12 5h1v1h-1zM14 5h2v1h-2zM18 5h1v1h-1zM20 5h3v1h-3zM26 5h1v1h-1zM32 5h1v1h-1zM4 6h1v1h-1zM6 6h3v1h-3zM10 6h1v1h-1zM13 6h1v1h-1zM16 6h4v1h-4zM24 6h1v1h-1zM26 6h1v1h-1zM28 6h3v1h-3zM32 6h1v1h-1zM4 7h1v1h-1zM6 7h3v1h-3zM10 7h1v1h-1zM12 7h4v1h-4zM17 7h2v1h-2zM21 7h1v1h-1zM26 7h1v1h-1zM28 7h3v1h-3zM32 7h1v1h-1zM4 8h1v1h-1zM6 8h3v1h-3zM10 8h1v1h-1zM13 8h1v1h-1zM17 8h4v1h-4zM23 8h1v1h-1zM26 8h1v1h-1zM28 8h3v1h-3zM32 8h1v1h-1zM4 9h1v1h-1zM10 9h1v1h-1zM15 9h1v1h-1zM18 9h1v1h-1zM20 9h1v1h-1zM23 9h2v1h-2zM26 9h1v1h-1zM32 9h1v1h-1zM4 10h7v1h-7zM12 10h1v1h-1zM14 10h1v1h-1zM16 10h1v1h-1zM18 10h1v1h-1zM20 10h1v1h-1zM22 10h1v1h-1zM24 10h1v1h-1zM26 10h7v1h-7zM12 11h2v1h-2zM15 11h2v1h-2zM18 11h2v1h-2zM21 11h1v1h-1zM23 11h1v1h-1zM4 12h1v1h-1zM6 12h2v1h-2zM9 12h3v1h-3zM13 12h3v1h-3zM19 12h4v1h-4zM26 12h1v1h-1zM29 12h1v1h-1zM31 12h2v1h-2zM4 13h1v1h-1zM6 13h1v1h-1zM12 13h2v1h-2zM16 13h2v1h-2zM20 13h1v1h-1zM22 13h2v1h-2zM26 13h3v1h-3zM32 13h1v1h-1zM6 14h9v1h-9zM16 14h1v1h-1zM20 14h2v1h-2zM28 14h1v1h-1zM30 14h2v1h-2zM5 15h1v1h-1zM7 15h2v1h-2zM14 15h2v1h-2zM17 15h2v1h-2zM22 15h1v1h-1zM25 15h1v1h-1zM27 15h1v1h-1zM32 15h1v1h-1zM4 16h1v1h-1zM7 16h2v1h-2zM10 16h2v1h-2zM13 16h3v1h-3zM17 16h2v1h-2zM21 16h1v1h-1zM24 16h2v1h-2zM29 16h2v1h-2zM5 17h1v1h-1zM7 17h1v1h-1zM9 17h1v1h-1zM11 17h3v1h-3zM15 17h2v1h-2zM19 17h1v1h-1zM21 17h3v1h-3zM26 17h1v1h-1zM30 17h3v1h-3zM5 18h4v1h-4zM10 18h3v1h-3zM14 18h2v1h-2zM17 18h2v1h-2zM22 18h4v1h-4zM27 18h2v1h-2zM30 18h3v1h-3zM5 19h1v1h-1zM7 19h1v1h-1zM12 19h3v1h-3zM18 19h1v1h-1zM24 19h4v1h-4zM31 19h1v1h-1zM4 20h3v1h-3zM9 20h2v1h-2zM16 20h2v1h-2zM20 20h1v1h-1zM24 20h2v1h-2zM27 20h3v1h-3zM31 20h1v1h-1zM7 21h1v1h-1zM9 21h1v1h-1zM14 21h2v1h-2zM17 21h3v1h-3zM21 21h1v1h-1zM24 21h2v1h-2zM27 21h1v1h-1zM29 21h3v1h-3zM4 22h1v1h-1zM7 22h1v1h-1zM10 22h1v1h-1zM12 22h6v1h-6zM19 22h1v1h-1zM21 22h1v1h-1zM28 22h1v1h-1zM30 22h1v1h-1zM6 23h1v1h-1zM8 23h1v1h-1zM13 23h1v1h-1zM19 23h1v1h-1zM21 23h3v1h-3zM25 23h1v1h-1zM28 23h1v1h-1zM30 23h1v1h-1zM5 24h1v1h-1zM7 24h6v1h-6zM21 24h2v1h-2zM24 24h7v1h-7zM12 25h2v1h-2zM15 25h1v1h-1zM17 25h1v1h-1zM20 25h3v1h-3zM24 25h1v1h-1zM28 25h5v1h-5zM4 26h7v1h-7zM12 26h1v1h-1zM14 26h1v1h-1zM17 26h1v1h-1zM20 26h1v1h-1zM22 26h3v1h-3zM26 26h1v1h-1zM28 26h2v1h-2zM31 26h1v1h-1zM4 27h1v1h-1zM10 27h1v1h-1zM12 27h2v1h-2zM16 27h3v1h-3zM22 27h3v1h-3zM28 27h2v1h-2zM4 28h1v1h-1zM6 28h3v1h-3zM10 28h1v1h-1zM13 28h1v1h-1zM15 28h1v1h-1zM19 28h1v1h-1zM21 28h1v1h-1zM24 28h5v1h-5zM30 28h3v1h-3zM4 29h1v1h-1zM6 29h3v1h-3zM10 29h1v1h-1zM12 29h1v1h-1zM14 29h2v1h-2zM18 29h4v1h-4zM23 29h3v1h-3zM27 29h3v1h-3zM32 29h1v1h-1zM4 30h1v1h-1zM6 30h3v1h-3zM10 30h1v1h-1zM12 30h3v1h-3zM16 30h2v1h-2zM20 30h3v1h-3zM24 30h2v1h-2zM27 30h1v1h-1zM30 30h1v1h-1zM32 30h1v1h-1zM4 31h1v1h-1zM10 31h1v1h-1zM14 31h3v1h-3zM18 31h1v1h-1zM20 31h1v1h-1zM22 31h1v1h-1zM24 31h2v1h-2zM29 31h1v1h-1zM31 31h1v1h-1zM4 32h7v1h-7zM12 32h2v1h-2zM15 32h2v1h-2zM22 32h3v1h-3zM27 32h1v1h-1zM31 32h1v1h-1z" fill="var(--bosque)"/></svg>
+            <p class="qr-pie"><b>Offers · join us</b>blogs.upm.es/gthau/offers-join-us</p>
+          </div>
+        </div>
+      </div>
+      <div class="pie"><span class="mk">IMF<i></i></span><span class="ti">BSc and MSc theses · 2026-27</span><span class="pg">02</span></div>
+    </section>
+
+    <!-- ============ OFERTA 01 ============ -->
+    <section class="sl" data-t="Oferta 01">
+      <div class="pad">
+        <p class="k">Project 01 · BSc / MSc</p>
+        <h2 class="st" style="max-width:none">Modelling persuasion strategies in advertising</h2>
+        <div class="oferta-cuerpo">
+          <p class="sd ac-linea">Automatic systems that encourage a more responsible consumption of advertising.</p>
+          <div class="figura">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 88"
+        class="banda">
+<defs>
+        <marker id="p-anuncios" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7"
+        markerHeight="7" orient="auto-start-reverse">
+        <path d="M0 0 L10 5 L0 10 z" fill="var(--bosque)"/>
+        </marker>
+</defs>
+        <text x="8" y="13" font-size="15" font-weight="600" letter-spacing="1.2" fill="var(--tenue)">INPUTS</text>
+<text x="522" y="13" font-size="15" font-weight="600" letter-spacing="1.2" fill="var(--tenue)">DETECTED STRATEGIES</text>
+<rect x="8" y="30" width="86" height="44" fill="var(--filete-suave)" stroke="var(--tenue)" stroke-width="1"/><text x="51" y="57" font-size="17" font-weight="400" text-anchor="middle" fill="var(--tinta)">image</text>
+<rect x="100" y="30" width="86" height="44" fill="var(--filete-suave)" stroke="var(--tenue)" stroke-width="1"/><text x="143" y="57" font-size="17" font-weight="400" text-anchor="middle" fill="var(--tinta)">audio</text>
+<rect x="192" y="30" width="86" height="44" fill="var(--filete-suave)" stroke="var(--tenue)" stroke-width="1"/><text x="235" y="57" font-size="17" font-weight="400" text-anchor="middle" fill="var(--tinta)">text</text>
+<path d="M286 52 L310 52" stroke="var(--bosque)" stroke-width="1.5" marker-end="url(#p-anuncios)"/><rect x="318" y="30" width="166" height="44" fill="var(--savia-suave)" stroke="var(--bosque)" stroke-width="1.4"/><text x="401" y="57" font-size="17" font-weight="600" text-anchor="middle" fill="var(--bosque)">multimodal model</text>
+<path d="M486 52 L512 52" stroke="var(--bosque)" stroke-width="1.5" marker-end="url(#p-anuncios)"/><rect x="522" y="30" width="115" height="44" fill="var(--petroleo-suave)"/><rect x="522" y="30" width="3" height="44" fill="var(--petroleo)"/><text x="535" y="57.5" font-size="17" font-weight="400" text-anchor="start" fill="var(--tinta)">urgency</text>
+<rect x="643" y="30" width="115" height="44" fill="var(--petroleo-suave)"/><rect x="643" y="30" width="3" height="44" fill="var(--petroleo)"/><text x="656" y="57.5" font-size="17" font-weight="400" text-anchor="start" fill="var(--tinta)">authority</text>
+<rect x="764" y="30" width="115" height="44" fill="var(--petroleo-suave)"/><rect x="764" y="30" width="3" height="44" fill="var(--petroleo)"/><text x="777" y="57.5" font-size="17" font-weight="400" text-anchor="start" fill="var(--tinta)">affect</text>
+</svg>
+            <p class="cap">Three modalities enter the model together; the persuasion strategies come out.</p>
+          </div>
+          <ul class="pts">
+            <li><b>Survey the state of the art</b> in machine learning and neuromarketing.</li>
+            <li><b>Implement</b> models that predict the persuasion strategies of an ad, in Python (PyTorch, Huggingface).</li>
+            <li><b>Evaluate</b> the proposed solutions with objective metrics.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="pie"><span class="mk">IMF<i></i></span><span class="ti">BSc and MSc theses · 2026-27</span><span class="pg">03</span></div>
+    </section>
+
+    <!-- ============ OFERTA 02 ============ -->
+    <section class="sl" data-t="Oferta 02">
+      <div class="pad">
+        <p class="k">Project 02 · BSc / MSc</p>
+        <h2 class="st" style="max-width:none">Predicting memorability from brain signals</h2>
+        <div class="oferta-cuerpo">
+          <p class="sd ac-linea">Can we tell whether someone remembered a video from their EEG?</p>
+          <div class="figura">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 88"
+        class="banda">
+<defs>
+        <marker id="p-eeg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7"
+        markerHeight="7" orient="auto-start-reverse">
+        <path d="M0 0 L10 5 L0 10 z" fill="var(--bosque)"/>
+        </marker>
+</defs>
+        <text x="8" y="13" font-size="15" font-weight="600" letter-spacing="1.2" fill="var(--tenue)">EEG SIGNAL</text>
+<text x="486" y="13" font-size="15" font-weight="600" letter-spacing="1.2" fill="var(--tenue)">PREDICTION</text>
+<circle cx="34" cy="52" r="21" fill="var(--savia-suave)" stroke="var(--bosque)" stroke-width="1.4"/><path d="M28 33 L34 25 L40 33" fill="var(--savia-suave)" stroke="var(--bosque)" stroke-width="1.4" stroke-linejoin="round"/><circle cx="34" cy="52" r="2.6" fill="var(--savia)"/><circle cx="34.0" cy="39.0" r="2.6" fill="var(--savia)"/><circle cx="22.7" cy="45.5" r="2.6" fill="var(--savia)"/><circle cx="22.7" cy="58.5" r="2.6" fill="var(--savia)"/><circle cx="34.0" cy="65.0" r="2.6" fill="var(--savia)"/><circle cx="45.3" cy="58.5" r="2.6" fill="var(--savia)"/><circle cx="45.3" cy="45.5" r="2.6" fill="var(--savia)"/><polyline points="66.0 52.0 68.0 47.9 69.9 45.0 71.8 43.7 73.8 43.9 75.8 44.6 77.7 45.0 79.7 44.7 81.6 44.1 83.5 43.9 85.5 44.6 87.5 46.3 89.4 48.1 91.3 49.1 93.3 48.5 95.2 46.4 97.2 43.6 99.2 41.3 101.1 40.4 103.0 41.2 105.0 43.1 106.9 45.3 108.9 46.9 110.8 48.2 112.8 49.5 114.8 51.7 116.7 55.0 118.7 59.0 120.6 62.6 122.5 64.8 124.5 65.0 126.4 63.6 128.4 61.6 130.3 60.0 132.3 59.6 134.2 60.2 136.2 61.0 138.1 61.4 140.1 61.0 142.1 60.2 144.0 59.7 145.9 60.3 147.9 61.9 149.8 63.8 151.8 64.8 153.8 64.1 155.7 61.4 157.6 57.4 159.6 53.2 161.6 49.8 163.5 47.5 165.4 46.0 167.4 44.5 169.3 42.5 171.3 40.1 173.2 38.1 175.2 37.3 177.1 38.2 179.1 40.5 181.1 43.1 183.0 44.8 184.9 45.1 186.9 43.9 188.8 42.0 190.8 40.7 192.8 40.3 194.7 41.0 196.7 42.0 198.6 42.7 200.5 42.7 202.5 42.7 204.4 43.4 206.4 45.6 208.3 49.5 210.3 54.4 212.2 58.9 214.2 62.2 216.2 63.6 218.1 63.6 220.0 63.1 222.0 62.8 223.9 63.2 225.9 63.7 227.8 63.7 229.8 62.6 231.8 60.5 233.7 58.4 235.7 57.3 237.6 57.7 239.5 59.6 241.5 61.9 243.4 63.6 245.4 63.7 247.3 62.3 249.3 59.9 251.2 57.5 253.2 55.7 255.2 54.4 257.1 52.9 259.0 50.6 261.0 47.3 262.9 43.6 264.9 40.5 266.9 39.0 268.8 39.5 270.8 41.6 272.7 44.1 274.6 45.9 276.6 46.6 278.5 46.3 280.5 45.9 282.4 45.9 284.4 46.7 286.4 47.7 288.3 48.1 290.2 47.3 292.2 45.5 294.1 43.5 296.1 42.5 298.0 43.2 300.0 45.7" fill="none" stroke="var(--savia)" stroke-width="1.6" stroke-linejoin="round"/><path d="M308 52 L328 52" stroke="var(--bosque)" stroke-width="1.5" marker-end="url(#p-eeg)"/><rect x="336" y="30" width="112" height="44" fill="var(--savia-suave)" stroke="var(--bosque)" stroke-width="1.4"/><text x="392" y="57" font-size="17" font-weight="600" text-anchor="middle" fill="var(--bosque)">model</text>
+<path d="M450 52 L476 52" stroke="var(--bosque)" stroke-width="1.5" marker-end="url(#p-eeg)"/><rect x="486" y="30" width="192" height="44" fill="var(--petroleo-suave)"/><rect x="486" y="30" width="3" height="44" fill="var(--petroleo)"/><text x="499" y="57.5" font-size="17" font-weight="400" text-anchor="start" fill="var(--tinta)">remembered</text>
+<rect x="688" y="30" width="192" height="44" fill="var(--filete-suave)"/><rect x="688" y="30" width="3" height="44" fill="var(--tenue)"/><text x="701" y="57.5" font-size="17" font-weight="400" text-anchor="start" fill="var(--tinta)">not remembered</text>
+</svg>
+            <p class="cap">The EEG recorded during viewing feeds a model that predicts whether the video will be remembered.</p>
+          </div>
+          <ul class="pts">
+            <li><b>Survey the previous literature</b> on predicting memorability from brain signals.</li>
+            <li><b>Analyse and preprocess</b> the EEG data.</li>
+            <li><b>Implement</b> models that predict video memorability, evaluated with objective metrics.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="pie"><span class="mk">IMF<i></i></span><span class="ti">BSc and MSc theses · 2026-27</span><span class="pg">04</span></div>
+    </section>
+
+    <!-- ============ OFERTA 03 ============ -->
+    <section class="sl" data-t="Oferta 03">
+      <div class="pad">
+        <p class="k">Project 03 · BSc / MSc</p>
+        <h2 class="st" style="max-width:none">Persuasive design in digital gambling</h2>
+        <div class="oferta-cuerpo">
+          <p class="sd ac-linea">Risks to financial and social wellbeing when play stops being responsible.</p>
+          <div class="figura">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 88"
+        class="banda">
+<defs>
+        <marker id="p-juego" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7"
+        markerHeight="7" orient="auto-start-reverse">
+        <path d="M0 0 L10 5 L0 10 z" fill="var(--bosque)"/>
+        </marker>
+</defs>
+        <text x="8" y="13" font-size="15" font-weight="600" letter-spacing="1.2" fill="var(--tenue)">INTERFACE</text>
+<text x="138" y="13" font-size="15" font-weight="600" letter-spacing="1.2" fill="var(--tenue)">RISK FACTORS</text>
+<rect x="8" y="30" width="92" height="44" fill="none" stroke="var(--bosque)" stroke-width="1.4"/><rect x="8" y="30" width="92" height="9" fill="var(--bosque)"/><rect x="15" y="45" width="44" height="5" fill="var(--filete-suave)"/><rect x="15" y="62" width="62" height="5" fill="var(--filete-suave)"/><rect x="64" y="45" width="29" height="5" fill="var(--petroleo-suave)"/><rect x="64" y="45" width="2" height="5" fill="var(--petroleo)"/><rect x="64" y="62" width="29" height="5" fill="var(--petroleo-suave)"/><rect x="64" y="62" width="2" height="5" fill="var(--petroleo)"/><rect x="15" y="53" width="78" height="5" fill="var(--petroleo-suave)"/><rect x="15" y="53" width="2" height="5" fill="var(--petroleo)"/><path d="M104 52 L126 52" stroke="var(--bosque)" stroke-width="1.5" marker-end="url(#p-juego)"/><rect x="138" y="30" width="240" height="44" fill="var(--petroleo-suave)"/><rect x="138" y="30" width="3" height="44" fill="var(--petroleo)"/><text x="151" y="57.5" font-size="16" font-weight="400" text-anchor="start" fill="var(--tinta)">intermittent rewards</text>
+<rect x="389" y="30" width="240" height="44" fill="var(--petroleo-suave)"/><rect x="389" y="30" width="3" height="44" fill="var(--petroleo)"/><text x="402" y="57.5" font-size="16" font-weight="400" text-anchor="start" fill="var(--tinta)">artificial urgency</text>
+<rect x="640" y="30" width="240" height="44" fill="var(--petroleo-suave)"/><rect x="640" y="30" width="3" height="44" fill="var(--petroleo)"/><text x="653" y="57.5" font-size="16" font-weight="400" text-anchor="start" fill="var(--tinta)">misleading promotions</text>
+</svg>
+            <p class="cap">Interface elements are analysed to flag the risk factors they carry.</p>
+          </div>
+          <ul class="pts">
+            <li><b>Survey the previous literature</b> on multimodal analysis of digital gambling.</li>
+            <li><b>Collect and preprocess</b> the relevant data sources.</li>
+            <li><b>Implement</b> models that detect persuasion, intermittent rewards and misleading promotions, evaluated with objective metrics.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="pie"><span class="mk">IMF<i></i></span><span class="ti">BSc and MSc theses · 2026-27</span><span class="pg">05</span></div>
+    </section>
+
+    <!-- ============ 6 · CIERRE ============ -->
+    <section class="sl" data-t="Contacto">
+      <div class="pad centrado">
+        <div class="cierre">
+          <div>
+            <p class="k">Get in touch</p>
+            <h2 class="st cierre-nombre">Iván Martín-Fernández</h2>
+            <p class="cierre-correo">ivan.martinf@upm.es</p>
+            <p class="cierre-sitio">GTHAU · ETSI de Telecomunicación<br>
+              Universidad Politécnica de Madrid</p>
+          </div>
+          <div class="qr-bloque">
+            <svg class="qr qr-xl" viewBox="0 0 37 37" xmlns="http://www.w3.org/2000/svg"
+                 role="img" aria-label="QR: https://imartinf.github.io/ofertas-tft/" shape-rendering="crispEdges"><rect width="37" height="37" fill="var(--lienzo)"/><path d="M4 4h7v1h-7zM12 4h1v1h-1zM16 4h3v1h-3zM21 4h2v1h-2zM26 4h7v1h-7zM4 5h1v1h-1zM10 5h1v1h-1zM13 5h2v1h-2zM17 5h2v1h-2zM21 5h1v1h-1zM24 5h1v1h-1zM26 5h1v1h-1zM32 5h1v1h-1zM4 6h1v1h-1zM6 6h3v1h-3zM10 6h1v1h-1zM12 6h3v1h-3zM16 6h4v1h-4zM21 6h3v1h-3zM26 6h1v1h-1zM28 6h3v1h-3zM32 6h1v1h-1zM4 7h1v1h-1zM6 7h3v1h-3zM10 7h1v1h-1zM17 7h2v1h-2zM20 7h2v1h-2zM24 7h1v1h-1zM26 7h1v1h-1zM28 7h3v1h-3zM32 7h1v1h-1zM4 8h1v1h-1zM6 8h3v1h-3zM10 8h1v1h-1zM13 8h3v1h-3zM17 8h1v1h-1zM22 8h1v1h-1zM26 8h1v1h-1zM28 8h3v1h-3zM32 8h1v1h-1zM4 9h1v1h-1zM10 9h1v1h-1zM12 9h2v1h-2zM16 9h1v1h-1zM18 9h1v1h-1zM20 9h3v1h-3zM26 9h1v1h-1zM32 9h1v1h-1zM4 10h7v1h-7zM12 10h1v1h-1zM14 10h1v1h-1zM16 10h1v1h-1zM18 10h1v1h-1zM20 10h1v1h-1zM22 10h1v1h-1zM24 10h1v1h-1zM26 10h7v1h-7zM16 11h1v1h-1zM20 11h1v1h-1zM4 12h1v1h-1zM6 12h1v1h-1zM10 12h2v1h-2zM13 12h1v1h-1zM15 12h1v1h-1zM18 12h1v1h-1zM20 12h1v1h-1zM24 12h1v1h-1zM27 12h1v1h-1zM30 12h1v1h-1zM32 12h1v1h-1zM4 13h1v1h-1zM6 13h2v1h-2zM9 13h1v1h-1zM11 13h3v1h-3zM15 13h3v1h-3zM19 13h1v1h-1zM21 13h1v1h-1zM23 13h5v1h-5zM31 13h2v1h-2zM4 14h2v1h-2zM7 14h1v1h-1zM10 14h1v1h-1zM15 14h1v1h-1zM19 14h1v1h-1zM21 14h4v1h-4zM26 14h2v1h-2zM29 14h2v1h-2zM32 14h1v1h-1zM4 15h1v1h-1zM6 15h1v1h-1zM8 15h1v1h-1zM11 15h2v1h-2zM16 15h1v1h-1zM18 15h2v1h-2zM22 15h1v1h-1zM24 15h1v1h-1zM29 15h1v1h-1zM4 16h3v1h-3zM10 16h2v1h-2zM14 16h1v1h-1zM17 16h3v1h-3zM23 16h1v1h-1zM26 16h1v1h-1zM32 16h1v1h-1zM4 17h3v1h-3zM8 17h1v1h-1zM13 17h1v1h-1zM19 17h3v1h-3zM23 17h2v1h-2zM26 17h2v1h-2zM31 17h2v1h-2zM4 18h1v1h-1zM10 18h4v1h-4zM15 18h5v1h-5zM23 18h1v1h-1zM25 18h1v1h-1zM28 18h1v1h-1zM32 18h1v1h-1zM7 19h1v1h-1zM9 19h1v1h-1zM11 19h2v1h-2zM15 19h2v1h-2zM22 19h1v1h-1zM25 19h1v1h-1zM10 20h1v1h-1zM12 20h1v1h-1zM15 20h1v1h-1zM17 20h4v1h-4zM22 20h1v1h-1zM24 20h1v1h-1zM26 20h2v1h-2zM32 20h1v1h-1zM6 21h4v1h-4zM11 21h2v1h-2zM14 21h1v1h-1zM17 21h1v1h-1zM19 21h3v1h-3zM23 21h2v1h-2zM26 21h2v1h-2zM30 21h3v1h-3zM4 22h8v1h-8zM15 22h1v1h-1zM19 22h2v1h-2zM23 22h1v1h-1zM28 22h2v1h-2zM32 22h1v1h-1zM6 23h1v1h-1zM8 23h1v1h-1zM12 23h2v1h-2zM15 23h1v1h-1zM17 23h1v1h-1zM20 23h1v1h-1zM22 23h3v1h-3zM26 23h3v1h-3zM4 24h5v1h-5zM10 24h1v1h-1zM12 24h2v1h-2zM15 24h3v1h-3zM19 24h1v1h-1zM23 24h7v1h-7zM31 24h1v1h-1zM12 25h1v1h-1zM16 25h1v1h-1zM19 25h3v1h-3zM24 25h1v1h-1zM28 25h3v1h-3zM32 25h1v1h-1zM4 26h7v1h-7zM12 26h1v1h-1zM16 26h5v1h-5zM24 26h1v1h-1zM26 26h1v1h-1zM28 26h1v1h-1zM32 26h1v1h-1zM4 27h1v1h-1zM10 27h1v1h-1zM14 27h1v1h-1zM18 27h2v1h-2zM22 27h3v1h-3zM28 27h1v1h-1zM31 27h2v1h-2zM4 28h1v1h-1zM6 28h3v1h-3zM10 28h1v1h-1zM13 28h1v1h-1zM16 28h4v1h-4zM23 28h7v1h-7zM32 28h1v1h-1zM4 29h1v1h-1zM6 29h3v1h-3zM10 29h1v1h-1zM14 29h2v1h-2zM17 29h4v1h-4zM24 29h2v1h-2zM28 29h3v1h-3zM32 29h1v1h-1zM4 30h1v1h-1zM6 30h3v1h-3zM10 30h1v1h-1zM12 30h3v1h-3zM16 30h4v1h-4zM25 30h1v1h-1zM28 30h1v1h-1zM31 30h2v1h-2zM4 31h1v1h-1zM10 31h1v1h-1zM13 31h3v1h-3zM17 31h1v1h-1zM20 31h1v1h-1zM24 31h2v1h-2zM27 31h1v1h-1zM29 31h1v1h-1zM4 32h7v1h-7zM12 32h2v1h-2zM15 32h1v1h-1zM18 32h3v1h-3zM23 32h3v1h-3zM27 32h1v1h-1zM29 32h1v1h-1zM32 32h1v1h-1z" fill="var(--bosque)"/></svg>
+            <p class="qr-pie"><b>The three projects</b>imartinf.github.io/ofertas-tft</p>
+          </div>
+        </div>
+      </div>
+      <div class="pie"><span class="mk">IMF<i></i></span><span class="ti">BSc and MSc theses · 2026-27</span><span class="pg">06</span></div>
+    </section>
+
+  </div>
+</div>
+
+<div class="control">
+  <span class="n" id="n">1 / 6 · Portada</span>
+  <button type="button" id="prev">←</button>
+  <button type="button" id="next">→</button>
+  <button type="button" id="full">Pantalla completa</button>
+  <button type="button" onclick="window.print()">PDF</button>
+</div>
+
+<script>
+(function(){
+  var hoja=document.getElementById('hoja');
+  var sl=[].slice.call(hoja.querySelectorAll('.sl'));
+  var n=document.getElementById('n');
+  var i=0;
+  function ver(k){
+    i=(k+sl.length)%sl.length;
+    sl.forEach(function(s,j){ s.classList.toggle('on', j===i); });
+    n.textContent=(i+1)+' / '+sl.length+' · '+(sl[i].dataset.t||'');
+    location.hash='d'+(i+1);
+  }
+  document.getElementById('next').onclick=function(){ver(i+1);};
+  document.getElementById('prev').onclick=function(){ver(i-1);};
+  document.getElementById('full').onclick=function(){
+    if(document.fullscreenElement) document.exitFullscreen();
+    else document.documentElement.requestFullscreen();
+  };
+  // en pantalla completa la barra de control estorba: la marca .fs la esconde
+  document.addEventListener('fullscreenchange',function(){
+    document.documentElement.classList.toggle('fs', !!document.fullscreenElement);
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){ver(i+1);e.preventDefault();}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){ver(i-1);e.preventDefault();}
+    else if(e.key==='f'||e.key==='F'){document.getElementById('full').click();}
+    else if(e.key==='p'||e.key==='P'){window.print();}
+  });
+  var m=location.hash.match(/^#d(\d+)$/);
+  ver(m ? parseInt(m[1],10)-1 : 0);
+  hoja.focus();
+})();
+</script>
+</body>
+</html>
