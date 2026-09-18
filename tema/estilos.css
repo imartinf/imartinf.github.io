@@ -279,3 +279,62 @@ footer a:hover{color:var(--petroleo-2)}
   footer{margin-top:9mm}
   *{-webkit-print-color-adjust:exact; print-color-adjust:exact}
 }
+
+/* ------------------------------------------------------------------- cv */
+/* La página de CV reutiliza el armazón del sitio. Lo único propio: el botón
+   que dispara la impresión y un juego de reglas de impresión más apretado,
+   porque un CV quiere caber en pocas hojas y una oferta no. */
+.acciones{display:flex; flex-wrap:wrap; align-items:center; max-width:none; margin:0 0 4px}
+button.boton{
+  display:inline-block; font-family:var(--sans); font-size:14px; font-weight:600;
+  color:var(--bosque); background:none; border:1px solid var(--bosque); border-radius:3px;
+  padding:9px 16px; margin:4px 8px 8px 0; line-height:1.4; cursor:pointer;
+}
+button.boton:hover{background:var(--savia-suave)}
+button.boton.primario{background:var(--bosque); color:var(--lienzo)}
+button.boton.primario:hover{background:#1B3A24}
+
+@media print{
+  .no-print{display:none !important}
+
+  /* Acotado a las páginas de CV: son las únicas con barra de acciones. */
+  .wrap:has(.acciones) section{margin-bottom:6mm}
+  .wrap:has(.acciones) section.intro{margin-bottom:6mm}
+  .wrap:has(.acciones) h2{margin-bottom:8px; padding-bottom:5px}
+  .wrap:has(.acciones) h3{font-size:11.5pt; margin:9px 0 2px}
+  .wrap:has(.acciones) h3 + p,
+  .wrap:has(.acciones) p.ficha{font-size:9pt; margin-bottom:7px}
+  .wrap:has(.acciones) p.lede{font-size:10.5pt; margin-bottom:8px}
+  .wrap:has(.acciones) table{font-size:9pt; margin:6px 0 10px}
+  .wrap:has(.acciones) th{padding:5px 10px 5px 0}
+  .wrap:has(.acciones) td{padding:5px 10px 5px 0}
+  .wrap:has(.acciones) .tarjetas ul{grid-template-columns:repeat(2,1fr); gap:7px; margin:10px 0}
+  .wrap:has(.acciones) .tarjetas li{font-size:9pt; padding:9px 11px}
+  .wrap:has(.acciones) details{background:none; border-left-color:var(--savia)}
+  .wrap:has(.acciones) details > summary{padding:7px 12px}
+  .wrap:has(.acciones) details p{font-size:9pt}
+
+  /* Nada se parte por la mitad: ni una ficha de publicación, ni una fila. */
+  .wrap:has(.acciones) section,
+  .wrap:has(.acciones) tr,
+  .wrap:has(.acciones) .tarjetas li,
+  .wrap:has(.acciones) details{break-inside:avoid; page-break-inside:avoid}
+  .wrap:has(.acciones) h3{break-after:avoid; page-break-after:avoid}
+}
+
+/* Las tarjetas del resumen del CV piden más presencia que una tarjeta de
+   índice: llevan el acento lateral de savia —el mismo recurso que .idea, tres
+   píxeles en vez de cuatro, el token `acento_lateral_px`— y las cifras en
+   mono, que es donde el sistema pone los datos. Acotado al CV: el resto del
+   sitio se queda con la tarjeta neutra. */
+.dato{font-family:var(--mono); font-variant-numeric:tabular-nums}
+.wrap:has(.acciones) .tarjetas li{
+  border-left:3px solid var(--savia);
+  padding:15px 16px 15px 17px;
+  font-size:14px; color:var(--tinta);
+}
+.wrap:has(.acciones) .tarjetas li strong{font-size:11px; margin-bottom:7px; color:var(--petroleo)}
+.wrap:has(.acciones) .tarjetas .dato{color:var(--bosque); font-weight:500}
+@media print{
+  .wrap:has(.acciones) .tarjetas li{padding:9px 11px 9px 12px; font-size:9pt}
+}
