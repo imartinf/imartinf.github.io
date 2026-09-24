@@ -12,7 +12,7 @@ descripcion: Academic CV of Iván Martín-Fernández. GTHAU, ETSIT — Universid
 
 ::: tarjetas
 - **Doctorate** Summa cum laude with international mention · June 2026
-- **Journal articles** <span class="dato">7</span> published · <span class="dato">3</span> in JCR Q1, all three in the top 25% · first or second author on <span class="dato">6</span>
+- **Journal articles** <span class="dato">7</span> published · <span class="dato">4</span> in JCR Q1, all four in the top 25% · first or second author on <span class="dato">6</span>
 - **Conferences** <span class="dato">17</span> international contributions, <span class="dato">15</span> as first or second author · <span class="dato">2</span> at a CORE A\* venue · <span class="dato">5</span> more in engineering education
 - **Teaching** <span class="dato">147 h</span> across four BSc and MSc courses · <span class="dato">2</span> teaching-innovation projects
 - **Supervision** <span class="dato">2</span> BSc and <span class="dato">1</span> MSc theses defended · one with distinction
@@ -87,7 +87,7 @@ END, ICERI and GELS.
 The 2026 MSc thesis led to a MediaEval 2026 Workshop contribution co-authored with the student.
 
 ## Journal publications
-<p class="lede">Seven articles published, six of them as first or second author. Three are in the first JCR quartile, all three within the top 25% of their category. Two further manuscripts under review.</p>
+<p class="lede">Seven articles published, six of them as first or second author. Four are in the first JCR quartile, all four within the top 25% of their category. Two further manuscripts under review.</p>
 
 ### Principled Evaluation of Multi-Label Persuasion in Advertisements with Large Vision-Language Models
 
@@ -131,7 +131,8 @@ S. Esteban-Romero, **Iván Martín-Fernández**, M. Gil-Martín, F. Fernández-M
 ### Emotion recognition from body movement through interpretable motion-aware sequential modeling
 
 S. Esteban-Romero, **Iván Martín-Fernández**, R. San-Segundo, M. Gil-Martín, F. Fernández-Martínez.
-*Frontiers in Artificial Intelligence* 9:1897208, 2026. Second author.
+*Frontiers in Artificial Intelligence* 9:1897208, 2026.
+JCR 6.7 — **Q1**, top 25%. Second author.
 [10.3389/frai.2026.1897208](https://doi.org/10.3389/frai.2026.1897208)
 
 ??? note "Under review"

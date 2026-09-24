@@ -12,7 +12,7 @@ descripcion: Currículum académico de Iván Martín-Fernández. GTHAU, ETSIT �
 
 ::: tarjetas
 - **Doctorado** Sobresaliente cum laude con mención internacional · junio de 2026
-- **Publicaciones** <span class="dato">7</span> artículos publicados · <span class="dato">3</span> en Q1 del JCR, los tres en el primer 25% · primer o segundo autor en <span class="dato">6</span>
+- **Publicaciones** <span class="dato">7</span> artículos publicados · <span class="dato">4</span> en Q1 del JCR, los cuatro en el primer 25% · primer o segundo autor en <span class="dato">6</span>
 - **Congresos** <span class="dato">17</span> contribuciones internacionales, <span class="dato">15</span> como primer o segundo autor · <span class="dato">2</span> en un congreso CORE A\* · <span class="dato">5</span> más en innovación docente
 - **Docencia** <span class="dato">147 h</span> en cuatro asignaturas de Grado y Máster · <span class="dato">2</span> proyectos de innovación educativa
 - **Dirección de trabajos** <span class="dato">2</span> TFG y <span class="dato">1</span> TFM defendidos · uno de ellos con Matrícula de Honor
@@ -87,7 +87,7 @@ END, ICERI y GELS.
 Del TFM de 2026 salió una contribución al MediaEval 2026 Workshop firmada con el estudiante.
 
 ## Publicaciones en revista
-<p class="lede">Siete artículos publicados, seis de ellos como primer o segundo autor. Tres están en el primer cuartil del JCR, los tres dentro del 25% superior de su categoría. Dos manuscritos más en revisión.</p>
+<p class="lede">Siete artículos publicados, seis de ellos como primer o segundo autor. Cuatro están en el primer cuartil del JCR, los cuatro dentro del 25% superior de su categoría. Dos manuscritos más en revisión.</p>
 
 ### Principled Evaluation of Multi-Label Persuasion in Advertisements with Large Vision-Language Models
 
@@ -131,7 +131,8 @@ S. Esteban-Romero, **Iván Martín-Fernández**, M. Gil-Martín, F. Fernández-M
 ### Emotion recognition from body movement through interpretable motion-aware sequential modeling
 
 S. Esteban-Romero, **Iván Martín-Fernández**, R. San-Segundo, M. Gil-Martín, F. Fernández-Martínez.
-*Frontiers in Artificial Intelligence* 9:1897208, 2026. Segundo autor.
+*Frontiers in Artificial Intelligence* 9:1897208, 2026.
+JCR 6.7 — **Q1**, top 25%. Segundo autor.
 [10.3389/frai.2026.1897208](https://doi.org/10.3389/frai.2026.1897208)
 
 ??? note "En revisión"
